@@ -3,7 +3,7 @@ from aiogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, C
 from aiogram.filters import CommandStart
 import aiofiles.os as aos
 
-from audio_lib import yt_dlp
+from audio_lib import sync
 
 import re
 from typing import Optional
@@ -67,7 +67,7 @@ async def url_link(message: Message):
             dirs: list[str] = await aos.listdir('audio')
 
             if name not in dirs:
-                yt_dlp(url, name)
+                sync.yt_dlp(url, name)
                 dirs: list[str] = await aos.listdir(f'audio/{name}')
                 for opus_file in dirs:
                     send_file: FSInputFile = FSInputFile(path=f'audio/{name}/{opus_file}', filename=opus_file)
