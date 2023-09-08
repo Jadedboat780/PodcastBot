@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "podcast-bot"
+version = "0.1.0"
+description = ""
+authors = ["Nikita Tokin <nikitatokin2006@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiogram = "3.0.0"
+maturin = "^1.2.3"
+mypy = "^1.5.1"
+
+[tool.poetry.group.tests.dependencies]
+pytest = "^7.4.0"
+
+[tool.maturin]
+python-source = "python"
+module-name = "podcast_bot.audio_lib"
+
+#[tool.poetry.dependencies.my_castom_lib]
+#path = "audio-lib"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
