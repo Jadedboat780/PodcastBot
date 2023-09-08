@@ -1,0 +1,13 @@
+[package]
+name = "audio-lib"
+version = "0.1.5"
+edition = "2021"
+
+[lib]
+name = "audio_lib"
+crate-type = ["cdylib"]
+
+[dependencies]
+tokio = { version = "1", features = ["full"] }
+pyo3 = { version = "0.19", features = ["extension-module"] }
+pyo3-asyncio = { version = "0.19", features = ["attributes", "tokio-runtime"] }
