@@ -1,59 +1,45 @@
 pub mod sync_mod {
-    use std::thread;
     use std::process::{Command, Output};
-    use std::fs::{create_dir, remove_file};
-    use pyo3::prelude::*;
-    use pyo3::exceptions::{PyFileExistsError, PyIOError, PySystemError, PyValueError};
+    use std::fs::remove_file;
+    use pyo3::pyfunction;
+    use pyo3::prelude::{PyResult, PyErr};
+    use pyo3::exceptions::{PyIOError, PySystemError};
 
 
     #[pyfunction]
-    pub fn yt_dlp(url: String, name: String) -> PyResult<bool> {
-        let thr = thread::spawn(move || -> PyResult<bool>
-            {
-                let download_result: PyResult<()> = download_audio(&url, &name);
-
-                let result = match download_result {
-                    Err(pyerr) => Err(pyerr),
-
-                    Ok(()) => match create_dir(format!("audio/{}", name)) {
-                        Ok(_) => {
-                            audio_separation(&name).expect("Error");
-                            return Ok(true);
-                        }
-                        Err(err) => return Err(PyErr::new::<PyFileExistsError, _>(err.to_string())),
-                    },
-                };
-
-                return result;
-            });
-
-        let res = thr.join().expect("Thread error");
-        return res;
-    }
-
-    fn is_streaming(url: &str) -> bool {
-        //Проверка на что ведёт url: стрим или видео
+    pub fn is_streaming<>(url: &str) -> PyResult<bool> {
+        //Проверка на что ведёт url: стрим(true) или видео(false)
         let output: Output = Command::new("yt-dlp")
             .arg("--skip-download")
             .arg("--dump-json")
             .arg(url)
             .output()
-            .expect("Wrong url");
+            .expect("Wrong yt_dlp command");
 
-        let is_steramimg: bool = String::from_utf8(output.stdout)
-            .expect("")
-            .contains(" \"is_live\": true");
+        let is_stream: Result<bool, PyErr> = if output.status.success() {
+            let is_stream: bool = String::from_utf8(output.stdout)
+                .expect("String is not utf-8")
+                .contains(" \"is_live\": true");
+            Ok(is_stream)
+        } else {
+            Err(PyErr::new::<PyIOError, _>("Неправильный url"))
+        };
 
-        return is_steramimg;
+        return is_stream;
     }
 
     #[pyfunction]
     pub fn download_audio(url: &str, name: &str) -> PyResult<()> {
-        if is_streaming(url) {
-            return Err(PyErr::new::<PyIOError, _>("Нельзя отправлять ссылки на стрим"));
+        //Скачивает аудио дорожку по url в формате .opus
+        let is_stream: PyResult<bool> = is_streaming(url);
+
+        if let Ok(true) = is_stream {
+            return Err(PyErr::new::<PyIOError, _>("Нельзя отправлять ссылки на прямую трансляцию"));
+        } else if let Err(PyErr) = is_stream {
+            return Err(PyErr);
         }
 
-        let yt_download = Command::new("yt-dlp")
+        let _yt_download: Output = Command::new("yt-dlp")
             .arg("-x")
             .arg("--audio-format")
             .arg("opus")
@@ -61,19 +47,15 @@ pub mod sync_mod {
             .arg(name)
             .arg(url)
             .output()
-            .expect("Video not download");
+            .expect("Wrong yt_dlp command");
 
-        if yt_download.status.success() {
-            Ok(())
-        } else {
-            Err(PyErr::new::<PyValueError, _>(yt_download.stderr))
-        }
+        Ok(())
     }
 
     #[pyfunction]
-    pub fn audio_separation(name: &str) -> PyResult<()> {
-        //Делит аудио файл на части по 60 минут + удаляет исходное аудио
-        let audio_duration: i32 = 60 * 55; // 55 минут
+    pub fn audio_separation(name: &str, minute: usize) -> PyResult<()> {
+        //Делит аудио файл на части по 55 минут + удаляет исходное аудио
+        let audio_duration: usize = 60 * minute; // количество минут минут
 
         let output = Command::new("ffmpeg")
             .arg("-i")
