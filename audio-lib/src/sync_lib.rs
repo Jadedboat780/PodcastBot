@@ -55,8 +55,8 @@ pub mod sync_mod {
 
     #[pyfunction]
     pub fn audio_separation(name: &str, minute: usize) -> PyResult<()> {
-        //Делит аудио файл на части по 55 минут + удаляет исходное аудио
-        let audio_duration: usize = 60 * minute; // количество минут минут
+        //Делит аудио файл на части по x минут
+        let audio_duration: usize = 60 * minute; // количество минут
 
         let output = Command::new("ffmpeg")
             .arg("-i")
