@@ -71,7 +71,7 @@ async def url_link(message: Message):
     if url == "https://www.youtube.com" or url == "https://www.youtube.com/":
         await message.reply(text="Зачем вы отправляете ссылку на главную страницу ютуба?")
 
-    elif ("https://www.youtube.com" or "https://www.youtube.com/") in url:
+    elif any(link in url for link in ("youtube.com", "youtu.be")):
         try:
             anecdote: str = random_anecdote()
             await message.answer(text=anecdote)  # отправка рандомного не смешного анекдота
