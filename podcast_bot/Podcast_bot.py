@@ -49,7 +49,7 @@ def random_anecdote() -> str:
 
 
 def url_replace(url: str, /) -> str:
-    '''Обработка url в нужный формат'''
+    '''Обработка url в нужный формат(возвращает id на видео)'''
     name: str = sub(".+\?[vsi]+=", "", url)
     name: str = sub("&t=[0-9]+s", "", name)
     name: str = sub("&list=.+", "", name)
@@ -66,6 +66,7 @@ async def send_audio(name: str, id: int, /):
 
 @dp.message()
 async def url_link(message: Message):
+    '''Принимает ссылку на видео и производит с ней необходимые действия'''
     url: str = message.text
 
     if url == "https://www.youtube.com" or url == "https://www.youtube.com/":
@@ -74,32 +75,33 @@ async def url_link(message: Message):
     elif any(link in url for link in ("youtube.com", "youtu.be")):
         try:
             anecdote: str = random_anecdote()
-            await message.answer(text=anecdote)  # отправка рандомного не смешного анекдота
+            await message.answer(text=anecdote)  # отправка случайного не смешного анекдота
 
-            name: str = url_replace(url)  # хранит id ссылки на видео
-            dirs: list[str] = await aos.listdir('audio')
-            id: int = message.from_user.id
+            name: str = url_replace(url)  # хранит id ссылки
+            dirs: list[str] = await aos.listdir('audio')  # получение списка сохранённых аудио
+            id: int = message.from_user.id  # хранит id пользователя
 
             if name not in dirs:
-                is_streaming: bool = await async_mod.is_streaming(url)
+                is_streaming: bool = await async_mod.is_streaming(url)  # проверка на стрим
 
                 if is_streaming:
                     raise IOError("Нельзя отправлять стрим")
                 else:
-                    await async_mod.download_audio(url, name)  # скачивание аудио дорожки видео на ютубе
+                    await async_mod.download_audio(url, name)  # скачивание аудио дорожки видео
                     await aos.mkdir(f'audio/{name}')  # создание папки для хранения частей аудио
                     await async_mod.audio_separation(name, 45)  # разделение аудио на несколько частей по 45 минут
                     await aos.unlink(f'{name}.opus')  # удаление исходного аудио
-                    await send_audio(name, id)  # отправка аудио
+                    await send_audio(name, id)  # отправка сохранённого аудио
 
             else:
-                await send_audio(name, id)
+                await send_audio(name, id)  # отправка ранее сохранённого аудио
 
         except IOError as err:
             await message.reply(text=str(err))
 
         except BaseException as err:
-            await bot.send_message(chat_id=admin_id, text=f"Error: {str(err)}\nLink: {url}")  # отправляет мне сообщение о непредвиденной ошибке
+            await bot.send_message(chat_id=admin_id,
+                                   text=f"Error: {str(err)}\nLink: {url}")  # отправляет мне сообщение о непредвиденной ошибке
             await message.answer("Извините, но что-то пошло не так.\nПопробуйте отправить ссылку на другое видео")
 
     else:
