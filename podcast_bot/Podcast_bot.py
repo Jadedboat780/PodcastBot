@@ -7,7 +7,7 @@ from audio_lib import async_mod
 from re import sub
 from random import randint
 
-from messages import welcome_message, commands_dict, base_anecdote
+from messages import welcome_message, commands_dict, base_anecdote, url_error
 from config import TOKEN, admin_id
 
 bot: Bot = Bot(token=TOKEN)
@@ -44,8 +44,8 @@ async def github_button(callback: CallbackQuery):
 
 def random_anecdote() -> str:
     '''Возвращает рандомный анекдот'''
-    num: int = randint(1, 24)
-    return base_anecdote[num]
+    random_num: int = randint(len(base_anecdote))
+    return base_anecdote[random_num]
 
 
 def url_replace(url: str, /) -> str:
@@ -85,7 +85,7 @@ async def url_link(message: Message):
                 is_streaming: bool = await async_mod.is_streaming(url)  # проверка на стрим
 
                 if is_streaming:
-                    raise IOError("Нельзя отправлять стрим")
+                    raise IOError(url_error[3])
                 else:
                     await async_mod.download_audio(url, name)  # скачивание аудио дорожки видео
                     await aos.mkdir(f'audio/{name}')  # создание папки для хранения частей аудио
@@ -100,12 +100,11 @@ async def url_link(message: Message):
             await message.reply(text=str(err))
 
         except BaseException as err:
-            await bot.send_message(chat_id=admin_id,
-                                   text=f"Error: {str(err)}\nLink: {url}")  # отправляет мне сообщение о непредвиденной ошибке
-            await message.answer("Извините, но что-то пошло не так.\nПопробуйте отправить ссылку на другое видео")
+            await bot.send_message(chat_id=admin_id, text=f"Error: {str(err)}\nLink: {url}")  # отправляет мне сообщение о непредвиденной ошибке
+            await message.answer(url_error[2])
 
     else:
-        await message.answer("Неправильный url")
+        await message.answer(url_error[1])
 
 
 if __name__ == '__main__':
