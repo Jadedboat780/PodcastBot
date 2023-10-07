@@ -12,7 +12,7 @@ maturin = "1.*"
 mypy = "1.5.*"
 
 [tool.poetry.group.tests.dependencies]    # содержит описание всех зависимостей для тестов проекта
-pytest = "^7.4.0"
+pytest-asyncio = "^0.21.1"
 
 [build-system]
 requires = ["poetry-core"]
