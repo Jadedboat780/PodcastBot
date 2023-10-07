@@ -1,17 +1,5 @@
 import pytest
-from re import sub
-
-def pattern_url(url: str, /) -> str:
-    '''Обработка url в нужный формат(возвращает id на видео)'''
-    if "www.youtube.com" in url:
-        url_id: str = sub(".+\?[vsi]+=", "", url)
-        url_id: str = sub("&t=[0-9]+s", "", url_id)
-        url_id: str = sub("&list=.+", "", url_id)
-    else:
-        url_id: str = sub("https://youtu.be/", "", url)
-        url_id: str = sub("\?si=.+", "", url_id)
-
-    return url_id
+from podcast_bot.additional_functions import pattern_url
 
 @pytest.mark.parametrize("url, url_id", [("https://www.youtube.com/watch?v=7n_8cOBpQrg", "7n_8cOBpQrg"),
                                          ("https://youtu.be/H8COfDh2cfo?si=LVHRZJawiVrAYOTq", "H8COfDh2cfo"),

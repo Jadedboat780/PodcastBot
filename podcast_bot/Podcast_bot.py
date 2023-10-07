@@ -4,9 +4,6 @@ from aiogram.filters import CommandStart
 import aiofiles.os as aos
 from audio_lib import async_mod
 
-from re import sub
-from random import randint
-
 from messages import welcome_message, commands_dict, base_anecdote, url_error
 from config import TOKEN, admin_id
 
@@ -42,26 +39,12 @@ async def github_button(callback: CallbackQuery):
     await callback.message.edit_text(text=commands_dict['GitHub_Directory'], reply_markup=keyboard)
 
 
-def random_anecdote() -> str:
-    '''Возвращает рандомный анекдот'''
-    random_num: int = randint(len(base_anecdote))
-    return base_anecdote[random_num]
-
-
-def url_replace(url: str, /) -> str:
-    '''Обработка url в нужный формат(возвращает id на видео)'''
-    name: str = sub(".+\?[vsi]+=", "", url)
-    name: str = sub("&t=[0-9]+s", "", name)
-    name: str = sub("&list=.+", "", name)
-    return name
-
-
-async def send_audio(name: str, id: int, /):
+async def send_audio(url_id: str, user_id: int, /):
     '''Отправляет все аудио, которые есть в папке'''
-    dirs: list[str] = await aos.listdir(f'audio/{name}')
+    dirs: list[str] = await aos.listdir(f'audio/{url_id}')
     for opus_file in dirs:
-        send_file: FSInputFile = FSInputFile(path=f'audio/{name}/{opus_file}')
-        await bot.send_audio(chat_id=id, audio=send_file, caption=opus_file)
+        send_file: FSInputFile = FSInputFile(path=f'audio/{url_id}/{opus_file}')
+        await bot.send_audio(chat_id=user_id, audio=send_file, caption=opus_file)
 
 
 @dp.message()
@@ -77,30 +60,31 @@ async def url_link(message: Message):
             anecdote: str = random_anecdote()
             await message.answer(text=anecdote)  # отправка случайного не смешного анекдота
 
-            name: str = url_replace(url)  # хранит id ссылки
+            url_id: str = pattern_url(url)  # хранит id ссылки
             dirs: list[str] = await aos.listdir('audio')  # получение списка сохранённых аудио
-            id: int = message.from_user.id  # хранит id пользователя
+            user_id: int = message.from_user.id  # хранит id пользователя
 
-            if name not in dirs:
+            if url_id not in dirs:
                 is_streaming: bool = await async_mod.is_streaming(url)  # проверка на стрим
 
                 if is_streaming:
                     raise IOError(url_error[3])
                 else:
-                    await async_mod.download_audio(url, name)  # скачивание аудио дорожки видео
-                    await aos.mkdir(f'audio/{name}')  # создание папки для хранения частей аудио
-                    await async_mod.audio_separation(name, 45)  # разделение аудио на несколько частей по 45 минут
-                    await aos.unlink(f'{name}.opus')  # удаление исходного аудио
-                    await send_audio(name, id)  # отправка сохранённого аудио
+                    await async_mod.download_audio(url, url_id)  # скачивание аудио дорожки видео
+                    await aos.mkdir(f'audio/{url_id}')  # создание папки для хранения частей аудио
+                    await async_mod.audio_separation(url_id, 45)  # разделение аудио на несколько частей по 45 минут
+                    await aos.unlink(f'{url_id}.opus')  # удаление исходного аудио
+                    await send_audio(url_id, user_id)  # отправка сохранённого аудио
 
             else:
-                await send_audio(name, id)  # отправка ранее сохранённого аудио
+                await send_audio(url_id, user_id)  # отправка ранее сохранённого аудио
 
         except IOError as err:
             await message.reply(text=str(err))
 
         except BaseException as err:
-            await bot.send_message(chat_id=admin_id, text=f"Error: {str(err)}\nLink: {url}")  # отправляет мне сообщение о непредвиденной ошибке
+            await bot.send_message(chat_id=admin_id,
+                                   text=f"Error: {str(err)}\nLink: {url}")  # отправляет мне сообщение о непредвиденной ошибке
             await message.answer(url_error[2])
 
     else:
