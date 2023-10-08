@@ -4,7 +4,8 @@ from aiogram.filters import CommandStart
 import aiofiles.os as aos
 from audio_lib import async_mod
 
-from messages import welcome_message, commands_dict, base_anecdote, url_error
+from messages import welcome_message, commands_dict, url_error
+from additional_functions import random_anecdote, pattern_url
 from config import TOKEN, admin_id
 
 bot: Bot = Bot(token=TOKEN)
