@@ -1,0 +1,5 @@
+aiogram==3
+maturin==1
+mypy==1.5
+pytest-asyncio==0.21
+

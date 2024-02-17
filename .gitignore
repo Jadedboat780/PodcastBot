@@ -1,4 +1,2 @@
-audio-lib/Cargo.lock
-audio-lib/target
-podcast_bot/config.py
-poetry.lock
+Cargo.lock
+target

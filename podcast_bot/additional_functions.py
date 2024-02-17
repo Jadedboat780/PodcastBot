@@ -1,12 +1,10 @@
 from re import sub
 from random import randint
-
 from podcast_bot.messages import base_anecdote
-
 
 def random_anecdote() -> str:
     '''Возвращает рандомный анекдот'''
-    random_num: int = randint(len(base_anecdote))
+    random_num: int = randint(1, 8)
     return base_anecdote[random_num]
 
 

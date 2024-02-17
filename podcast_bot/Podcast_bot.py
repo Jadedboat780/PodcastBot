@@ -50,7 +50,7 @@ async def send_audio(url_id: str, user_id: int, /):
 
 @dp.message()
 async def url_link(message: Message):
-    '''Принимает ссылку на видео и производит с ней необходимые действия'''
+    '''Принимает сообщение с ссылккой на видео и производит с ней необходимые действия'''
     url: str = message.text
 
     if url == "https://www.youtube.com" or url == "https://www.youtube.com/":
@@ -59,21 +59,21 @@ async def url_link(message: Message):
     elif any(link in url for link in ("youtube.com", "youtu.be")):
         try:
             anecdote: str = random_anecdote()
-            await message.answer(text=anecdote)  # отправка случайного не смешного анекдота
+            await message.answer(text=anecdote)  # отправка случайного несмешного анекдота
 
             url_id: str = pattern_url(url)  # хранит id ссылки
-            dirs: list[str] = await aos.listdir('audio')  # получение списка сохранённых аудио
+            dirs: list[str] = await aos.listdir('audio')  # получение списка сохранённых ранее аудио
             user_id: int = message.from_user.id  # хранит id пользователя
 
             if url_id not in dirs:
-                is_streaming: bool = await async_mod.is_streaming(url)  # проверка на стрим
+                is_streaming: bool = await async_mod.is_streaming(url)  # проверка: ведёт ли ссылка на прямую трансляцию
 
                 if is_streaming:
-                    raise IOError(url_error[3])
+                    raise IOError(url_error[2])
                 else:
-                    await async_mod.download_audio(url, url_id)  # скачивание аудио дорожки видео
+                    await async_mod.download_audio(url, url_id)  # скачивание аудио дорожки из видео
                     await aos.mkdir(f'audio/{url_id}')  # создание папки для хранения частей аудио
-                    await async_mod.audio_separation(url_id, 45)  # разделение аудио на несколько частей по 45 минут
+                    await async_mod.audio_separation(url_id, 45)  # разделение аудио файла на несколько частей по 45 минут
                     await aos.unlink(f'{url_id}.opus')  # удаление исходного аудио
                     await send_audio(url_id, user_id)  # отправка сохранённого аудио
 
@@ -86,7 +86,7 @@ async def url_link(message: Message):
         except BaseException as err:
             await bot.send_message(chat_id=admin_id,
                                    text=f"Error: {str(err)}\nLink: {url}")  # отправляет мне сообщение о непредвиденной ошибке
-            await message.answer(url_error[2])
+            await message.answer(url_error[3])
 
     else:
         await message.answer(url_error[1])
