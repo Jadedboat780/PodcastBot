@@ -1,2 +1,2 @@
-TOKEN: str = '6682421064:AAHFSCJ9rz5DpsFu1J7oDbC0ch6p1d1EldE'
-admin_id: str = '1176105670'
+TOKEN: str = 'token'
+admin_id: str = 'id'
