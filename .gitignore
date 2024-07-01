@@ -1,2 +1,4 @@
-Cargo.lock
-target
+audio-lib/.idea
+audio-lib/target
+venv
+.env
