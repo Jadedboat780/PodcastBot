@@ -4,6 +4,8 @@ from config import config
 
 
 class Storage:
+    __slots__ = ('config', 'bucket_name', 'session')
+
     def __init__(self, access_key: str, secret_key: str, endpoint_url: str, bucket_name: str):
         self.config = {
             "aws_access_key_id": access_key,
@@ -37,6 +39,9 @@ class Storage:
         """Удаление файла из хранилища"""
         async with self.get_client() as client:
             await client.delete_object(Bucket=self.bucket_name, Key=file_name)
+
+    def __repr__(self):
+        return f'Storage "{self.bucket_name}"'
 
 
 storage = Storage(access_key=config.access_key,
