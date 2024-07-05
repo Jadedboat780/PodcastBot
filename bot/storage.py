@@ -1,6 +1,8 @@
 from aiobotocore.session import get_session, AioSession, AioBaseClient
+import aiofiles
 from contextlib import asynccontextmanager
-from config import config
+from typing import AsyncGenerator
+from bot.config import config
 
 
 class Storage:
@@ -16,7 +18,7 @@ class Storage:
         self.session: AioSession = get_session()
 
     @asynccontextmanager
-    async def get_client(self) -> AioBaseClient:
+    async def get_client(self) -> AsyncGenerator[AioBaseClient, None]:
         """Получение сессии"""
         async with self.session.create_client("s3", **self.config) as client:
             yield client
@@ -24,16 +26,16 @@ class Storage:
     async def upload_file(self, file_name: str):
         """Загрузка файла в хранилище"""
         async with self.get_client() as client:
-            with open(file_name, "rb") as file:
-                await client.put_object(Bucket=self.bucket_name, Key=file_name, Body=file)
+            async with aiofiles.open(file_name, "rb") as file:
+                await client.put_object(Bucket=self.bucket_name, Key=file_name, Body=await file.read())
 
     async def get_file(self, file_name: str, new_file: str):
         """Загрузка файла из хранилища"""
         async with self.get_client() as client:
             response = await client.get_object(Bucket=self.bucket_name, Key=file_name)
             data = await response["Body"].read()
-            with open(new_file, "wb") as file:
-                file.write(data)
+            async with aiofiles.open(new_file, "wb") as file:
+                await file.write(data)
 
     async def delete_file(self, file_name: str):
         """Удаление файла из хранилища"""
