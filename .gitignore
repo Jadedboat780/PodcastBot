@@ -1,4 +1,5 @@
 audio-lib/.idea
 audio-lib/target
+.idea
 venv
 .env
