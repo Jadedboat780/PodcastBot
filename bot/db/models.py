@@ -27,7 +27,7 @@ class Document(BaseModel):
         return doc
 
     @staticmethod
-    def to_model(doc: Mapping[str, any]) -> "Document" | "AudioDoc":
+    def to_model(doc: Mapping[str, any]) -> 'Document':
         """Convert a MongoDB document to a Pydantic model."""
         try:
             doc["id"] = str(doc.pop("_id"))
