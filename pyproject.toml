@@ -1,19 +1,20 @@
 [tool.poetry]
 name = "podcast-bot"
 version = "0.2.0"
-description = "Telegram bot for podcasts"
+description = "A Telegram bot that helps users easily download audio from YouTube videos"
 authors = ["nikit <nikitatokin2006@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-pydantic-settings = "^2.3.4"
-
 aiogram = "^3.6.0"
-aiobotocore = "^2.13.1"
 
-motor = "^3.5.1"
-motor-types = {extras = ["motor"], version = "^1.0.0b4"}
+aiobotocore = "^2.13.1"
+types-aiobotocore = {extras = ["essential"], version = "^2.15.1"}
+
+motor = "3.6"
+
+pydantic-settings = "^2.3.4"
 
 [tool.poetry.group.dev.dependencies]
 maturin = "^1.5.1"

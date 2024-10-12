@@ -1,7 +1,7 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from .models import Document
 from bot.config import config
+from .models import Document, AudioDoc
 
 
 class MongoCollection:
@@ -27,12 +27,15 @@ class MongoCollection:
         except:
             return False
 
-    async def get_doc(self, id: str) -> Document | None:
-        """Get a document by id"""
-        doc = await self.collection.find_one({"_id": id})
-        return doc
+    async def get_doc(self, params: dict[str: any]) -> Document | AudioDoc | None:
+        """Get a document by parameters """
+        doc = await self.collection.find_one(params)
+        if not doc:
+            return None
 
-    async def get_all_doc(self) -> list[Document]:
+        return Document.to_model(doc)
+
+    async def get_all_docs(self) -> list[Document | AudioDoc]:
         """Get all documents"""
         docs = []
         cursor = self.collection.find()
@@ -41,15 +44,15 @@ class MongoCollection:
 
         return docs
 
-    async def insert_doc(self, doc: Document) -> None:
+    async def insert_doc(self, doc: Document | AudioDoc) -> None:
         """Insert document"""
         await self.collection.insert_one(doc.to_mongo())
 
-    async def delete_doc(self, id: str) -> None:
-        """Delete document by id"""
-        result = await self.collection.delete_one({"_id": id})
+    async def delete_doc(self, params: dict[str: any]) -> None:
+        """Delete document by parameters"""
+        result = await self.collection.delete_one(params)
         if result.deleted_count == 0:
-            raise ValueError(f"Document with id {id} not found")
+            raise ValueError(f"The document with parameters '{params}' was not found")
 
     def __repr__(self):
         return f'MongoDB(db={self.db.name}, collection={self.collection.name})'

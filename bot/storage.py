@@ -1,8 +1,9 @@
 from aiobotocore.session import get_session, AioSession, AioBaseClient
 import aiofiles
+import aiofiles.os as aos
 
 from contextlib import asynccontextmanager
-from typing import AsyncGenerator
+from typing import AsyncGenerator, Generator
 
 from bot.config import config
 
@@ -25,8 +26,11 @@ class Storage:
         async with self.session.create_client("s3", **self.config) as client:
             yield client
 
-    async def upload_file(self, file_path: str, object_key: str) -> None:
-        """Upload file in S3"""
+    async def upload_file(self, path: str, object_key: str, is_delete: bool = False) -> int:
+        """Uploads the file in S3 and optionally deletes it"""
+        file_path = f'{path}/{object_key}'
+        file_size = await aos.path.getsize(file_path)
+
         async with self.get_client() as client:
             async with aiofiles.open(file_path, "rb") as file:
                 await client.put_object(
@@ -35,8 +39,13 @@ class Storage:
                     Body=await file.read(),
                 )
 
+        if is_delete:
+            await aos.remove(file_path)
+
+        return file_size
+
     async def download_file(self, object_key: str, destination_path: str) -> None:
-        """Upload file from S3"""
+        """Downloads the file from S3"""
         async with self.get_client() as client:
             response = await client.get_object(Bucket=self.bucket_name, Key=object_key)
             data = await response["Body"].read()
@@ -48,14 +57,25 @@ class Storage:
         async with self.get_client() as client:
             await client.delete_object(Bucket=self.bucket_name, Key=object_key)
 
-    async def list_files(self) -> list[dict]:
+    async def list_files(self) -> Generator[str, None, None]:
         """Getting a list of files from S3"""
+        files_info: list[dict] = []
+
         async with self.get_client() as client:
             paginator = client.get_paginator("list_objects_v2")
-            file_list = []
             async for page in paginator.paginate(Bucket=self.bucket_name):
-                file_list.extend(page.get("Contents", []))
-            return file_list
+                files_info.extend(page.get("Contents", []))
+
+        files_name = (f['Key'] for f in files_info)
+        return files_name
+
+    async def file_link(self, filename: str) -> str | None:
+        """Returns link to file by filename"""
+        files = await self.list_files()
+        if filename in files:
+            return f'{config.storage_path}/{filename}'
+        else:
+            return None
 
     def __repr__(self):
         return f'Storage(bucket_name="{self.bucket_name}")'
