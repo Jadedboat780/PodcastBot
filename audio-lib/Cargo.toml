@@ -1,6 +1,6 @@
 [package]
 name = "audio-lib"
-version = "1.0"
+version = "0.1.0"
 edition = "2021"
 
 [lib]
@@ -8,6 +8,7 @@ name = "audio_lib"
 crate-type = ["cdylib"]
 
 [dependencies]
+pyo3 = {version="0.20.3", features = ["extension-module"]}
+pyo3-asyncio = { version = "0.20.0", features = ["attributes", "tokio-runtime"] }
 tokio = { version = "1", features = ["full"] }
-pyo3 = { version = "0.19", features = ["extension-module"] }
-pyo3-asyncio = { version = "0.19", features = ["attributes", "tokio-runtime"] }
+serde_json = "1.0.118"

@@ -1,5 +1,4 @@
-audio-lib/Cargo.lock
-audio-lib/target
-podcast_bot/config.py
-poetry.lock
-DOCKERFILE
+*target
+venv
+*.idea
+.env
