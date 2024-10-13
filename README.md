@@ -49,6 +49,6 @@ class VideoInfo:
     """Stores information about the video"""
     id: str
     title: str
-    duration: str
+    duration: int
     is_live: bool
 ```

@@ -49,6 +49,6 @@ class VideoInfo:
     """Хранит информацию о видео"""
     id: str
     title: str
-    duration: str
+    duration: int
     is_live: bool
 ```
