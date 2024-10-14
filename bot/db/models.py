@@ -1,46 +1,47 @@
-from pydantic import BaseModel, ValidationError
+from collections.abc import Mapping
 from enum import StrEnum, auto
-from typing import Annotated, Mapping
-from annotated_types import MinLen, Ge
+from typing import Annotated
+
+from annotated_types import Ge, MinLen
+from pydantic import BaseModel
 
 
 class FileType(StrEnum):
-    """File type enum"""
-    txt = auto()
-    img = auto()
-    audio = auto()
-    video = auto()
+	"""File type enum"""
+
+	txt = auto()
+	img = auto()
+	audio = auto()
+	video = auto()
 
 
 class Document(BaseModel):
-    """Model for storing file properties"""
-    id: Annotated[str, MinLen(8)]
-    title: Annotated[str, MinLen(2)]
-    type: FileType
-    size: Annotated[int, Ge(1)]
-    link: str
+	"""Model for storing file properties"""
 
-    def to_mongo(self) -> dict:
-        """Convert Pydantic model to a MongoDB-compatible document"""
-        doc = self.model_dump()
-        doc["_id"] = doc.pop("id")
-        return doc
+	id: Annotated[str, MinLen(8)]
+	title: Annotated[str, MinLen(2)]
+	type: FileType
+	size: Annotated[int, Ge(1)]
+	link: str
 
-    @staticmethod
-    def to_model(doc: Mapping[str, any]) -> 'Document':
-        """Convert a MongoDB document to a Pydantic model."""
-        try:
-            doc["id"] = str(doc.pop("_id"))
+	def to_mongo(self) -> dict:
+		"""Convert Pydantic model to a MongoDB-compatible document"""
+		doc = self.model_dump()
+		doc["_id"] = doc.pop("id")
+		return doc
 
-            if doc.get("type") == FileType.audio:
-                return AudioDoc(**doc)
-            else:
-                return Document(**doc)
+	@staticmethod
+	def to_model(doc: Mapping[str, any]) -> "Document":
+		"""Convert a MongoDB document to a Pydantic model."""
+		doc["id"] = str(doc.pop("_id"))
 
-        except ValidationError as e:
-            raise ValueError(f"Error converting Mongo document to model: {e}")
+		if doc.get("type") == FileType.audio:
+			return AudioDoc(**doc)
+		else:
+			return Document(**doc)
 
 
 class AudioDoc(Document):
-    """Meta-data for audio files"""
-    duration: Annotated[int, Ge(1)]
+	"""Meta-data for audio files"""
+
+	duration: Annotated[int, Ge(1)]

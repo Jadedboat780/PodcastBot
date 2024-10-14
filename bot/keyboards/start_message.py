@@ -1,11 +1,13 @@
-from aiogram.types import InlineKeyboardButton
 from enum import StrEnum, auto
+
+from aiogram.types import InlineKeyboardButton
 
 
 class Command(StrEnum):
-    """Commands enum"""
-    start = auto()
-    help = auto()
+	"""Commands enum"""
+
+	start = auto()
+	help = auto()
 
 
 button_start = InlineKeyboardButton(text="Начальное сообщение ↩", callback_data="start")
@@ -16,8 +18,8 @@ button_donate = InlineKeyboardButton(text="🍺")
 
 
 def initial_buttons(command: Command) -> list[list[InlineKeyboardButton]]:
-    """Returns the inline-buttons for the initial message"""
-    if command == Command.start:
-        return [[button_help], [button_github]]
-    elif command == Command.help:
-        return [[button_start], [button_github], [button_author]]
+	"""Returns the inline-buttons for the initial message"""
+	if command == Command.start:
+		return [[button_help], [button_github]]
+	elif command == Command.help:
+		return [[button_start], [button_github], [button_author]]
