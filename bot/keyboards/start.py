@@ -1,5 +1,4 @@
 from enum import StrEnum, auto
-
 from aiogram.types import InlineKeyboardButton
 
 
@@ -14,7 +13,6 @@ button_start = InlineKeyboardButton(text="Начальное сообщение 
 button_help = InlineKeyboardButton(text="Помощь ⓘ", callback_data="help")
 button_github = InlineKeyboardButton(text="Исходный код этого проекта 💾", url="https://github.com/Jadedboat780/PodcastBot.git")
 button_author = InlineKeyboardButton(text="Автор бота 💬", url="https://t.me/Tokin_Nikita")
-button_donate = InlineKeyboardButton(text="🍺")
 
 
 def initial_buttons(command: Command) -> list[list[InlineKeyboardButton]]:
