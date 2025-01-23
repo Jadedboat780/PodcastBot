@@ -1,4 +1,6 @@
-*target
-venv
 *.idea
+*vscode
+*target
+*venv
+*.venv
 .env
