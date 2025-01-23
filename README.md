@@ -10,20 +10,20 @@ The bot receives a YouTube video link, performs some checks, extracts the audio 
 1) Replace the examples of environment variables from the env.example file with their own values
 2) Execute commands
 ```shell
-# create virtual environment
-python3 -m venv venv 
-venv\Scripts\activate.bat # Linux/MacOs
-source venv/bin/activate  # Windows
+# installation uv
+pip install uv
 
-# install poetry and project dependencies
-pip install poetry
-poetry install
+# creating a virtual environment and installing dependencies
+uv sync
+
+# activating virtual environment
+source .venv/bin/activate
 
 # building a library
-maturin develop -m audio-lib/Cargo.toml
+maturin develop --uv -m audio-lib/Cargo.toml
 
-# start the project
-poetry run bot-start 
+# project launch
+uv run -m bot.main.py
 ```
 
 ## About the library for working with audio

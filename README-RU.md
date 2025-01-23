@@ -10,20 +10,20 @@ Telegram-бот, который помогает пользователям ле
 1) Заменить примеры переменных окружения из файла env.example на собственные значения
 2) Выполнить команды:
 ```shell
-# создать виртуальное окружение
-python3 -m venv venv 
-venv\Scripts\activate.bat # Linux/MacOs
-source venv/bin/activate  # Windows
+# установка  uv
+pip install uv
 
-# установить poetry и зависимости проекта
-pip install poetry
-poetry install
+# создание виртуального окружения и установка зависимостей
+uv sync
+
+# активация виртуального окружения
+source .venv/bin/activate
 
 # сборка библиотеки 
-maturin develop -m audio-lib/Cargo.toml
+maturin develop --uv -m audio-lib/Cargo.toml
 
-# запустить проект
-poetry run bot-start 
+# запуск проекта
+uv run -m bot.main.py
 ```
 
 ## Про библиотеку для работы с аудио
