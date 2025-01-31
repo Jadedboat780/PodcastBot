@@ -2,7 +2,7 @@ from aiogram import F, Router
 from aiogram.filters import CommandStart
 from aiogram.types import CallbackQuery, InlineKeyboardMarkup, Message
 
-from bot.keyboards import Command, initial_buttons
+from bot.keyboards.start import Command, initial_buttons
 
 from .messages import commands
 
