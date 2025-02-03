@@ -2,7 +2,7 @@ use pyo3::prelude::*;
 use pyo3::exceptions::PyIOError;
 use serde_json::Value;
 use tokio::process::Command;
-use super::schemas::VideoInfo;
+use super::models::VideoInfo;
 
 #[pyfunction]
 pub fn get_video_info(py: Python<'_>, url: String) -> PyResult<&PyAny> {
