@@ -1,0 +1,10 @@
+.idea/
+.vscode/
+.venv/
+__pycache__/
+target/
+.env.example
+.gitignore
+README.md
+README-RU.md
+ruff.toml
