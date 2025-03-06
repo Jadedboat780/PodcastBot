@@ -1,47 +1,28 @@
-from collections.abc import Mapping
 from enum import StrEnum, auto
-from typing import Annotated
 
-from annotated_types import Ge, MinLen
-from pydantic import BaseModel
+from beanie import Document, Indexed
+from pydantic import Field
 
 
 class FileType(StrEnum):
 	"""File type enum"""
 
-	txt = auto()
-	img = auto()
-	audio = auto()
-	video = auto()
-
-
-class Document(BaseModel):
-	"""Model for storing file properties"""
-
-	id: Annotated[str, MinLen(8)]
-	title: Annotated[str, MinLen(2)]
-	type: FileType
-	size: Annotated[int, Ge(1)]
-	link: str
-
-	def to_mongo(self) -> dict:
-		"""Convert Pydantic model to a MongoDB-compatible document"""
-		doc = self.model_dump()
-		doc["_id"] = doc.pop("id")
-		return doc
-
-	@staticmethod
-	def to_model(doc: Mapping[str, any]) -> "Document":
-		"""Convert a MongoDB document to a Pydantic model."""
-		doc["id"] = str(doc.pop("_id"))
-
-		if doc.get("type") == FileType.audio:
-			return AudioDoc(**doc)
-		else:
-			return Document(**doc)
+	TXT = auto()
+	IMAGE = auto()
+	AUDIO = auto()
+	VIDEO = auto()
 
 
 class AudioDoc(Document):
-	"""Meta-data for audio files"""
+	"""Document for audio files"""
 
-	duration: Annotated[int, Ge(1)]
+	id: Indexed(str, unique=True)
+	title: str
+	type: FileType
+	size: int = Field(ge=1)
+	link: str
+	duration: int = Field(ge=1)
+
+	class Settings:
+		name = "audio_docs"
+		use_cache = True
