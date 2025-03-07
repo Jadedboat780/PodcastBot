@@ -4,7 +4,7 @@ requires-python = ">=3.12"
 
 [[package]]
 name = "aiobotocore"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -13,12 +13,11 @@ dependencies = [
     { name = "jmespath" },
     { name = "multidict" },
     { name = "python-dateutil" },
-    { name = "urllib3" },
     { name = "wrapt" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/a0/46/86a52025bb356bc38bfba9fa11f754b8411f400265094c3448148a931280/aiobotocore-2.19.0.tar.gz", hash = "sha256:552d5756989621b5274f1b4a4840cd76ae83dd930d0b1839af6443743a893faf", size = 107828 }
+sdist = { url = "https://files.pythonhosted.org/packages/d2/dc/f5f872fb01ce37c09525cedc7ecfad7002ffe2a8a23f77d7d2c234399b51/aiobotocore-2.21.1.tar.gz", hash = "sha256:010357f43004413e92a9d066bb0db1f241aeb29ffed306e9197061ffc94e6577", size = 108900 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/8c/43/8a1bdf8dd7f0d7eca7be0d64bacdd96c593cf3f3aea6c452f90e052cf9e8/aiobotocore-2.19.0-py3-none-any.whl", hash = "sha256:12c2960a21472b8eb3452cde5eb31d541ca1464d236f4221556320fa8aed2ee8", size = 77659 },
+    { url = "https://files.pythonhosted.org/packages/95/67/026598918f92145156f2feb7957f57daefda20375cc2ac1a0692a9b8010b/aiobotocore-2.21.1-py3-none-any.whl", hash = "sha256:bd7c49a6d6f8a3d9444b0a94417c8da13813b5c7eec1c4f0ec2db7e8ce8f23e7", size = 78313 },
 ]
 
 [[package]]
@@ -32,7 +31,7 @@ wheels = [
 
 [[package]]
 name = "aiogram"
-version = "3.17.0"
+version = "3.18.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiofiles" },
@@ -42,9 +41,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/85/5e/a849ec3d64522e937906aa36b4b8f81bb7085928f9c0adea1b8f6ec02fad/aiogram-3.17.0.tar.gz", hash = "sha256:01bffbf43d6fb4a31e3c668a601bc7e71c2cf3919bd831ba6c179ef86034c2f4", size = 1371207 }
+sdist = { url = "https://files.pythonhosted.org/packages/d9/18/a019fab03dca70d93e46ce5380254690415c2cbf3e084be003dc8c8b69ae/aiogram-3.18.0.tar.gz", hash = "sha256:429883a419751bfebeeafdc74804807d0abd5c9879ab0f06c045130de4752605", size = 1375474 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c3/1c/77268a6d9c6bb2e6b7ee66a15bd029fde317277a9a6b7a6cef17e7519546/aiogram-3.17.0-py3-none-any.whl", hash = "sha256:251738331107ce2a679a901354b1409b7544d9f030d8092dcc68f2bb3bb0c467", size = 610049 },
+    { url = "https://files.pythonhosted.org/packages/4e/17/cf1461c422815ad982daccbf636ec579f3bb178d4bdcb456f392478af70d/aiogram-3.18.0-py3-none-any.whl", hash = "sha256:ea2a2fbd11e4fffbba14a2081eb6322482ae569c6348618de5f7b6b41b52384d", size = 612779 },
 ]
 
 [[package]]
@@ -161,16 +160,16 @@ wheels = [
 
 [[package]]
 name = "botocore"
-version = "1.36.3"
+version = "1.37.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "jmespath" },
     { name = "python-dateutil" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/3a/61/69eb06a803c83e0da733b60b2bc65880c18ef2dee19ee10cf8732794a3c1/botocore-1.36.3.tar.gz", hash = "sha256:775b835e979da5c96548ed1a0b798101a145aec3cd46541d62e27dda5a94d7f8", size = 13507880 }
+sdist = { url = "https://files.pythonhosted.org/packages/e5/01/3083bff25fd91193162298920cb093b9095609408416526d52b2826965b7/botocore-1.37.1.tar.gz", hash = "sha256:b194db8fb2a0ffba53568c364ae26166e7eec0445496b2ac86a6e142f3dd982f", size = 13578835 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/9f/14/f952fed35b9c04aa66453b5fb5d1262a5a9f5dfdcb396d387c1ff0c6da41/botocore-1.36.3-py3-none-any.whl", hash = "sha256:536ab828e6f90dbb000e3702ac45fd76642113ae2db1b7b1373ad24104e89255", size = 13304681 },
+    { url = "https://files.pythonhosted.org/packages/3d/20/352b2bf99f93ba18986615841786cbd0d38f7856bd49d4e154a540f04afe/botocore-1.37.1-py3-none-any.whl", hash = "sha256:c1db1bfc5d8c6b3b6d1ca6794f605294b4264e82a7e727b88e0fef9c2b9fbb9c", size = 13359164 },
 ]
 
 [[package]]
@@ -313,22 +312,22 @@ wheels = [
 
 [[package]]
 name = "maturin"
-version = "1.8.1"
+version = "1.8.2"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/9a/08/ccb0f917722a35ab0d758be9bb5edaf645c3a3d6170061f10d396ecd273f/maturin-1.8.1.tar.gz", hash = "sha256:49cd964aabf59f8b0a6969f9860d2cdf194ac331529caae14c884f5659568857", size = 197397 }
+sdist = { url = "https://files.pythonhosted.org/packages/e0/8f/6978427ce3f72b189012e1731d1d2d27b3151caa741666c905320e0a3662/maturin-1.8.2.tar.gz", hash = "sha256:e31abc70f6f93285d6e63d2f4459c079c94c259dd757370482d2d4ceb9ec1fa0", size = 199276 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4c/00/f34077315f34db8ad2ccf6bfe11b864ca27baab3a1320634da8e3cf89a48/maturin-1.8.1-py3-none-linux_armv6l.whl", hash = "sha256:7e590a23d9076b8a994f2e67bc63dc9a2d1c9a41b1e7b45ac354ba8275254e89", size = 7568415 },
-    { url = "https://files.pythonhosted.org/packages/5c/07/9219976135ce0cb32d2fa6ea5c6d0ad709013d9a17967312e149b98153a6/maturin-1.8.1-py3-none-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:8d8251a95682c83ea60988c804b620c181911cd824aa107b4a49ac5333c92968", size = 14527816 },
-    { url = "https://files.pythonhosted.org/packages/e6/04/fa009a00903acdd1785d58322193140bfe358595347c39f315112dabdf9e/maturin-1.8.1-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:b9fc1a4354cac5e32c190410208039812ea88c4a36bd2b6499268ec49ef5de00", size = 7580446 },
-    { url = "https://files.pythonhosted.org/packages/9b/d4/414b2aab9bbfe88182b734d3aa1b4fef7d7701e50f6be48500378b8c8721/maturin-1.8.1-py3-none-manylinux_2_12_i686.manylinux2010_i686.musllinux_1_1_i686.whl", hash = "sha256:621e171c6b39f95f1d0df69a118416034fbd59c0f89dcaea8c2ea62019deecba", size = 7650535 },
-    { url = "https://files.pythonhosted.org/packages/f0/64/879418a8a0196013ec1fb19eada0781c04a30e8d6d9227e80f91275a4f5b/maturin-1.8.1-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl", hash = "sha256:98f638739a5132962347871b85c91f525c9246ef4d99796ae98a2031e3df029f", size = 8006702 },
-    { url = "https://files.pythonhosted.org/packages/39/c2/605829324f8371294f70303aca130682df75318958efed246873d3d604ab/maturin-1.8.1-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl", hash = "sha256:f9f5c47521924b6e515cbc652a042fe5f17f8747445be9d931048e5d8ddb50a4", size = 7368164 },
-    { url = "https://files.pythonhosted.org/packages/be/6c/30e136d397bb146b94b628c0ef7f17708281611b97849e2cf37847025ac7/maturin-1.8.1-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.musllinux_1_1_armv7l.whl", hash = "sha256:0f4407c7353c31bfbb8cdeb82bc2170e474cbfb97b5ba27568f440c9d6c1fdd4", size = 7450889 },
-    { url = "https://files.pythonhosted.org/packages/1b/50/e1f5023512696d4e56096f702e2f68d6d9a30afe0a4eec82b0e27b8eb4e4/maturin-1.8.1-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.musllinux_1_1_ppc64le.whl", hash = "sha256:ec49cd70cad3c389946c6e2bc0bd50772a7fcb463040dd800720345897eec9bf", size = 9585819 },
-    { url = "https://files.pythonhosted.org/packages/b7/80/b24b5248d89d2e5982553900237a337ea098ca9297b8369ca2aa95549e0f/maturin-1.8.1-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:c08767d794de8f8a11c5c8b1b47a4ff9fb6ae2d2d97679e27030f2f509c8c2a0", size = 10920801 },
-    { url = "https://files.pythonhosted.org/packages/6e/f4/8ede7a662fabf93456b44390a5ad22630e25fb5ddaecf787251071b2e143/maturin-1.8.1-py3-none-win32.whl", hash = "sha256:d678407713f3e10df33c5b3d7a343ec0551eb7f14d8ad9ba6febeb96f4e4c75c", size = 6873556 },
-    { url = "https://files.pythonhosted.org/packages/9c/22/757f093ed0e319e9648155b8c9d716765442bea5bc98ebc58ad4ad5b0524/maturin-1.8.1-py3-none-win_amd64.whl", hash = "sha256:a526f90fe0e5cb59ffb81f4ff547ddc42e823bbdeae4a31012c0893ca6dcaf46", size = 7823153 },
-    { url = "https://files.pythonhosted.org/packages/a4/f5/051413e04f6da25069db5e76759ecdb8cd2a8ab4a94045b5a3bf548c66fa/maturin-1.8.1-py3-none-win_arm64.whl", hash = "sha256:e95f077fd2ddd2f048182880eed458c308571a534be3eb2add4d3dac55bf57f4", size = 6552131 },
+    { url = "https://files.pythonhosted.org/packages/67/7a/8fbcaf8f29e583567b21512aa56012fbe5f3e4293ae18a768f4106d584d5/maturin-1.8.2-py3-none-linux_armv6l.whl", hash = "sha256:174cb81c573c4a74be96b4e4469ac84e543cff75850fe2728a8eebb5f4d7b613", size = 7676631 },
+    { url = "https://files.pythonhosted.org/packages/c8/88/e17f71a34d4c99558e33c2c3de2c53c4ec01e3fa1c931ba0a8cdc805ebc5/maturin-1.8.2-py3-none-macosx_10_12_x86_64.macosx_11_0_arm64.macosx_10_12_universal2.whl", hash = "sha256:63ff7f612da90a26838a9c03aa8a80bab8b4e26f63e3df6ddb0e818394eb0aeb", size = 15126750 },
+    { url = "https://files.pythonhosted.org/packages/cb/fa/aab9005b0edaeb04a47cc47b07fa4afa25484d2f72217b276e2a446b795f/maturin-1.8.2-py3-none-macosx_10_12_x86_64.whl", hash = "sha256:c91504b4f05b07d0a9fb47c2a2a39c074328b6bc8f252190240e431f5f7ea8d7", size = 7885398 },
+    { url = "https://files.pythonhosted.org/packages/24/59/0f12db41e683d82a48f92ac5499c89faa416036b3c3a7379b71aa1ce0ccb/maturin-1.8.2-py3-none-manylinux_2_12_i686.manylinux2010_i686.musllinux_1_1_i686.whl", hash = "sha256:05e3a2aa9611afa5e1205dfa1434607f9d8e223d613a8a7c85540a159af688c0", size = 7754886 },
+    { url = "https://files.pythonhosted.org/packages/03/94/b9cb42cb5706389692b24f4691645e0b980708e46c9f008e89f4bb92a497/maturin-1.8.2-py3-none-manylinux_2_12_x86_64.manylinux2010_x86_64.musllinux_1_1_x86_64.whl", hash = "sha256:b408093e49d6d4ab98066eefd0fac64b01eb7af639e9b3151660c5fa96ce147c", size = 8226047 },
+    { url = "https://files.pythonhosted.org/packages/1e/38/63c8198a626407b1cefa37670f9d995616249f541ed9616252895bb2710b/maturin-1.8.2-py3-none-manylinux_2_17_aarch64.manylinux2014_aarch64.musllinux_1_1_aarch64.whl", hash = "sha256:638c66616f9b10060197c48d9e1eedf444d975699d9cd829138e69014554cda7", size = 7485993 },
+    { url = "https://files.pythonhosted.org/packages/d3/f3/8d7308902ab190a71c80bda92f3b72d446067fdf40a4c29d5de8e379f598/maturin-1.8.2-py3-none-manylinux_2_17_armv7l.manylinux2014_armv7l.musllinux_1_1_armv7l.whl", hash = "sha256:c2001b5c57e0dbf5992be56b93ffa897d4bcd0d6ca3de448e381b621225d4d87", size = 7570380 },
+    { url = "https://files.pythonhosted.org/packages/06/49/5458df84167506023b934b71488e75aa4a2f9af005f5659d9915adedca55/maturin-1.8.2-py3-none-manylinux_2_17_ppc64le.manylinux2014_ppc64le.musllinux_1_1_ppc64le.whl", hash = "sha256:e015a5534aefb568b96a9cc7bc58995b1d90b5e2a44455d79e4f073a88cb0c83", size = 9811532 },
+    { url = "https://files.pythonhosted.org/packages/d9/52/deb373d1a046287e6f77146204524adbf70184c5510ed95aab882570c69d/maturin-1.8.2-py3-none-manylinux_2_17_s390x.manylinux2014_s390x.whl", hash = "sha256:5e624f73cb7fbfd8042e8c5cc5c11f58bede23a7931ea3ea9839812f5bd362fc", size = 10910211 },
+    { url = "https://files.pythonhosted.org/packages/da/b8/f0475031de5f5328c8b2bbb9b50503a6b0a58b3c5cbe50a656c418ca7435/maturin-1.8.2-py3-none-win32.whl", hash = "sha256:4a62268975f98885a04ae9f0df875b304e4f8c1f0d989e8a7ab18e42793126ee", size = 6980868 },
+    { url = "https://files.pythonhosted.org/packages/a2/f3/a67264d4ae3bf61a73abf616eba59543e0c8d182a77230703380f1858494/maturin-1.8.2-py3-none-win_amd64.whl", hash = "sha256:b6b29811013056f46a1e0b7f26907ae080028be65102d4fb23fbdf86847fffbd", size = 7886565 },
+    { url = "https://files.pythonhosted.org/packages/5e/df/3641646696277249407c923795825176403c208a6553e0fd21b6764038b5/maturin-1.8.2-py3-none-win_arm64.whl", hash = "sha256:4232c2380faf61862d27269c6acf14e1d542c4ba64086a3f5c356d6e5e4823e7", size = 6656754 },
 ]
 
 [[package]]
@@ -421,18 +420,18 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "aiobotocore", specifier = ">=2.19.0" },
-    { name = "aiogram", specifier = ">=3.17.0" },
+    { name = "aiobotocore", specifier = ">=2.21.1" },
+    { name = "aiogram", specifier = ">=3.18.0" },
     { name = "beanie", specifier = ">=1.29.0" },
-    { name = "maturin", specifier = ">=1.8.1" },
-    { name = "pydantic-settings", specifier = ">=2.7.1" },
+    { name = "maturin", specifier = ">=1.8.2" },
+    { name = "pydantic-settings", specifier = ">=2.8.1" },
 ]
 
 [package.metadata.requires-dev]
 dev = [
     { name = "pytest", specifier = ">=8.3.4" },
     { name = "ruff", specifier = ">=0.9.2" },
-    { name = "types-aiobotocore", extras = ["essential"], specifier = ">=2.19.0" },
+    { name = "types-aiobotocore", extras = ["essential"], specifier = ">=2.21.1" },
 ]
 
 [[package]]
@@ -531,15 +530,15 @@ wheels = [
 
 [[package]]
 name = "pydantic-settings"
-version = "2.7.1"
+version = "2.8.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "pydantic" },
     { name = "python-dotenv" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/73/7b/c58a586cd7d9ac66d2ee4ba60ca2d241fa837c02bca9bea80a9a8c3d22a9/pydantic_settings-2.7.1.tar.gz", hash = "sha256:10c9caad35e64bfb3c2fbf70a078c0e25cc92499782e5200747f942a065dec93", size = 79920 }
+sdist = { url = "https://files.pythonhosted.org/packages/88/82/c79424d7d8c29b994fb01d277da57b0a9b09cc03c3ff875f9bd8a86b2145/pydantic_settings-2.8.1.tar.gz", hash = "sha256:d5c663dfbe9db9d5e1c646b2e161da12f0d734d422ee56f567d0ea2cee4e8585", size = 83550 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b4/46/93416fdae86d40879714f72956ac14df9c7b76f7d41a4d68aa9f71a0028b/pydantic_settings-2.7.1-py3-none-any.whl", hash = "sha256:590be9e6e24d06db33a4262829edef682500ef008565a969c73d39d5f8bfb3fd", size = 29718 },
+    { url = "https://files.pythonhosted.org/packages/0b/53/a64f03044927dc47aafe029c42a5b7aabc38dfb813475e0e1bf71c4a59d0/pydantic_settings-2.8.1-py3-none-any.whl", hash = "sha256:81942d5ac3d905f7f3ee1a70df5dfb62d5569c12f51a5a647defc1c3d9ee2e9c", size = 30839 },
 ]
 
 [[package]]
@@ -652,14 +651,14 @@ wheels = [
 
 [[package]]
 name = "types-aiobotocore"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "botocore-stubs" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c9/c1/4d6ef598f22d25b895b4cbf8bdecfccfaf3544d362c9d2703f46a14fbabd/types_aiobotocore-2.19.0.tar.gz", hash = "sha256:e96380593f1f7edc81f9d9786d96ca693d941be00fc65af7c759f9cf25fc69c7", size = 84099 }
+sdist = { url = "https://files.pythonhosted.org/packages/a9/9c/8f6d94e65849537a09e6e63e323598a8bcf66983c0bb8377931d38f67dd5/types_aiobotocore-2.21.1.tar.gz", hash = "sha256:ad099710635a16a06df99d9aeb957e0c488358201dfff5f76f73f5ec2987fc3b", size = 84148 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/16/19/7700da8a934481fd4d18302b4880b5955fb9cffe2938dc890f81743fc245/types_aiobotocore-2.19.0-py3-none-any.whl", hash = "sha256:9264d2f4b5b9c3167fce8212a9c62ecdda15d52d8d77811040c653ca69aca74f", size = 51530 },
+    { url = "https://files.pythonhosted.org/packages/7b/d1/2bb50be5bbcb383d7023f28aa62c02f8ad013981c28b4a62bdb91062cddc/types_aiobotocore-2.21.1-py3-none-any.whl", hash = "sha256:41034ca807698e666b53ecb45eaf42850161e6093c291a8f1f31536c970c1d0e", size = 51719 },
 ]
 
 [package.optional-dependencies]
@@ -675,65 +674,65 @@ essential = [
 
 [[package]]
 name = "types-aiobotocore-cloudformation"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/c9/e9/d9466281d9b9943e9709ecd031e91a161d03c4ce9a5c11e7f7729157b1e5/types_aiobotocore_cloudformation-2.19.0.tar.gz", hash = "sha256:dedb3f7a383e4425da92e68d74fb6dddfffa400821ee25f447e61f5a9cb45201", size = 54760 }
+sdist = { url = "https://files.pythonhosted.org/packages/11/87/4c632cc85f4103b0b4c8459d1c83a2da69fd4066626910ed428ffae4ebc1/types_aiobotocore_cloudformation-2.21.1.tar.gz", hash = "sha256:ab4aab3749bf7c5a74748f8b7d20b9222b38d462d8b07cb5162394b0278ccbef", size = 59105 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/34/55/077899d403046e92127a405eeb1f62fb4a77f34ffd223757acb3b67bb4bf/types_aiobotocore_cloudformation-2.19.0-py3-none-any.whl", hash = "sha256:5f9f92da37882c6a1659717596922457bb5acdba2c58424e078ebe212fcb89e8", size = 67101 },
+    { url = "https://files.pythonhosted.org/packages/d5/9e/2c39ef38b447150b66f8888fe5032c4269ea488c9a55da7d75284cbb174b/types_aiobotocore_cloudformation-2.21.1-py3-none-any.whl", hash = "sha256:4c3f307ec4dac531db82a9b1cb86ab363d82ddc4e9dce6b79a04988497b69504", size = 70218 },
 ]
 
 [[package]]
 name = "types-aiobotocore-dynamodb"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/4c/97/62515e93051a3bdd2df200368a9f8ed790f6d508356446d463fab99db070/types_aiobotocore_dynamodb-2.19.0.tar.gz", hash = "sha256:64c889ca593fa7ea5f7e6a7e06b6db1b55906af490bcdf0627b0baeceec78d48", size = 47353 }
+sdist = { url = "https://files.pythonhosted.org/packages/66/27/207586698335d59af8af295f934f85339e993a55d9f846e5fc15d923754b/types_aiobotocore_dynamodb-2.21.1.tar.gz", hash = "sha256:bf8befc54b7655ea55e1d1d4703e7a94be3ac9917b58918e4d789a570eb9e217", size = 47596 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/eb/f6/d6b91ad1ab0c92be2ccbbe1d9c3449e40cfaa050723c765916153eb822dd/types_aiobotocore_dynamodb-2.19.0-py3-none-any.whl", hash = "sha256:44c0cf2388949ee7a8e48047334c67c9e520a6a40028a627739131323314068e", size = 57016 },
+    { url = "https://files.pythonhosted.org/packages/27/43/937cdab850d90d180bf8126048710ed748efb8afd837b241ad2bd65674c2/types_aiobotocore_dynamodb-2.21.1-py3-none-any.whl", hash = "sha256:98431097214367abc22e274c069693ed3b8b64f21fe50322e2cfd8c79624f67c", size = 57334 },
 ]
 
 [[package]]
 name = "types-aiobotocore-ec2"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/a8/e7/ffb60685c8b37793ae2b4cbe3748b9e6b3095ac5f71f2c10afb9b0baf394/types_aiobotocore_ec2-2.19.0.tar.gz", hash = "sha256:d1a58d28c8725088d11e11f11a22bf1e10c7f4745a9c5e1d73a4c0b8b658a0b6", size = 390436 }
+sdist = { url = "https://files.pythonhosted.org/packages/7a/83/b55a593bd309206fbb0bc731ff80583bf930a08149570c0d6ca5f5b42b06/types_aiobotocore_ec2-2.21.1.tar.gz", hash = "sha256:c507ad4a6795d7fe7da375c57c6cdd0e6cc9aaafcf60eedee7d9358347e93021", size = 388527 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/bc/aa/eaa50a73b3e18895366118fabea80fc30bbd7843ecefd1f12b86dbf2871d/types_aiobotocore_ec2-2.19.0-py3-none-any.whl", hash = "sha256:f9bccc5ac41474b34e5b1061bcb9ae008137fd10094dd070012d254c64f0fbdf", size = 380631 },
+    { url = "https://files.pythonhosted.org/packages/be/bf/b3efe31901f636985f32ee7aec1e04c31e2c89caf154fc0c61bd42193e4e/types_aiobotocore_ec2-2.21.1-py3-none-any.whl", hash = "sha256:cb09a611f1dce55f0f80c89dc890654ecfbc080706c12c5a85e59d2f33167b48", size = 378466 },
 ]
 
 [[package]]
 name = "types-aiobotocore-lambda"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/14/47/a350e81206d43edc699ea2fd3429d989e62f631b1ad7f495bd786ca10a64/types_aiobotocore_lambda-2.19.0.tar.gz", hash = "sha256:381017758a8803a7dabde4c681fad4b41af5a9662b3f23b01d8f3b4f58e27d07", size = 41272 }
+sdist = { url = "https://files.pythonhosted.org/packages/77/e6/49c67d4db5ebc93accf991cdc11e1a3f2b97f8fa724a836fe008af41983e/types_aiobotocore_lambda-2.21.1.tar.gz", hash = "sha256:9a64cff10888ad268fc9c3df9f2db22f64023a6a53d38ab1cc053427fe513e46", size = 41619 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/45/e2/58b86b2a3afa3e9c83bcf7892ec88278f41e07d47e376c471ecbd5953fd1/types_aiobotocore_lambda-2.19.0-py3-none-any.whl", hash = "sha256:a7ebe4e2af83f19659d702331f1dd5f9d29bdbab0b01b3cb5e1efcd4981ab15c", size = 48310 },
+    { url = "https://files.pythonhosted.org/packages/16/e6/4963ba602d8375c3529829caf31b2fc9810054fd1c2f8fcd25575b761d20/types_aiobotocore_lambda-2.21.1-py3-none-any.whl", hash = "sha256:4444c2679774c0cadc59f84885bdbd3f704ba3f174170a5f86e292742f76159e", size = 48700 },
 ]
 
 [[package]]
 name = "types-aiobotocore-rds"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/29/f6/609163b9aff26ccc31ff54601fe1dc370a74ce6e80c8840c376ea9bfcd24/types_aiobotocore_rds-2.19.0.tar.gz", hash = "sha256:34b32f2f3b314d056137b4dcbc27e43f7d740fdea5858904706f698b7e3112cc", size = 84219 }
+sdist = { url = "https://files.pythonhosted.org/packages/a6/8f/e985ba458dd23b170bca3fafe2b43718395f2df9f1b239f6a8d64e1042d9/types_aiobotocore_rds-2.21.1.tar.gz", hash = "sha256:d9441bbb263a6b64cde25970a9ae4f2865d50b5b4e1dd09bfc8e516496618c14", size = 84278 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/b6/e5/5fdd641037de79ad123d5aca8f22b4dc43f15b624f5a085465d925b42920/types_aiobotocore_rds-2.19.0-py3-none-any.whl", hash = "sha256:2a0bb6f8f5fbc8b1e526f97b4ee3c0264469710e72941fbadd86f64bfa041627", size = 90899 },
+    { url = "https://files.pythonhosted.org/packages/72/e6/dc047834edde167e51c6328a1ed27d50b9fd934a3e0e1fae6948b2d2fc1e/types_aiobotocore_rds-2.21.1-py3-none-any.whl", hash = "sha256:3e8570f74b652ed97273a5c77aa1917202e4dcb0c28ac53a1bd79603690108c6", size = 91042 },
 ]
 
 [[package]]
 name = "types-aiobotocore-s3"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/74/8b/95792b7884e4814e9e2673bbf72906e3fc93a43df655935f208cce5b8d5c/types_aiobotocore_s3-2.19.0.tar.gz", hash = "sha256:a4d8e2a3053ca5f97f7b46a4670e6217e7fb5b3ede3fd4431fc60916b580f91f", size = 73529 }
+sdist = { url = "https://files.pythonhosted.org/packages/e4/71/de81daa98ff5dbba2f426268c36514af3740f3997107bb7f3235072f4a9e/types_aiobotocore_s3-2.21.1.tar.gz", hash = "sha256:5c8a68b78d577006062de4c158bd902eab2c38e81570be5bac0227375f9d8153", size = 74063 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c8/36/c9b3288cf16b8925c8e8861a1de98456e3ac65025693659d946c0f5105f7/types_aiobotocore_s3-2.19.0-py3-none-any.whl", hash = "sha256:74f5f933e47523ab6bf12d7efe0f7dfbbcd48f1f2176efae37b121925fff1251", size = 80870 },
+    { url = "https://files.pythonhosted.org/packages/04/af/67b6e27f273ad69d3498afd5488a060e718e0c21e24c2f0aeffb8702e640/types_aiobotocore_s3-2.21.1-py3-none-any.whl", hash = "sha256:64b04b7729a3322e4758401e722c21277aa0e798c00d0077c4f43a9f584858fd", size = 81395 },
 ]
 
 [[package]]
 name = "types-aiobotocore-sqs"
-version = "2.19.0"
+version = "2.21.1"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/6a/8d/4ed1e2fe1aaa85de2426b1b505468f0df46484c604b62a4ed24f933f8d48/types_aiobotocore_sqs-2.19.0.tar.gz", hash = "sha256:e336b82df19bbc5c0fbe9f91f397d6d0a75a4477241ab4b5bcd59730a05023c6", size = 23534 }
+sdist = { url = "https://files.pythonhosted.org/packages/3c/bd/c3329cde101bb85b6b3013e1ae2b708fcc36b430b2a68e934318522dd60d/types_aiobotocore_sqs-2.21.1.tar.gz", hash = "sha256:180364c4efd05c60498c3294297e8b359559598b2c51fb6a449178f5634f8e18", size = 23575 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/12/3e/4ceeb0062bff9d7a1f1de07b3f378a7762294be565074d72050aae7b7e07/types_aiobotocore_sqs-2.19.0-py3-none-any.whl", hash = "sha256:d828684602f0b4d0ad950c66ac3c1c19aabd869b9cafbd86a3cb98f582f9fe7f", size = 34229 },
+    { url = "https://files.pythonhosted.org/packages/0d/10/ec067cfde1cbc1d6208b1f3a6c83e05f1f589efeefd1e30ba9c76c13cec3/types_aiobotocore_sqs-2.21.1-py3-none-any.whl", hash = "sha256:c593349a2b4d9f2e145993408a16df7871b857f46286e9816553c46a1896a937", size = 34278 },
 ]
 
 [[package]]
