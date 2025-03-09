@@ -6,9 +6,10 @@ from bot.config import config
 from .models import AudioDoc
 
 
-async def init():
+async def init_db():
+	"""Initialize the database"""
 	# Create Motor client
 	client = AsyncIOMotorClient(config.MONGO_URL)
 
-	# Init beanie with the Product document class
+	# Init beanie
 	await init_beanie(database=client.db_name, document_models=[AudioDoc])

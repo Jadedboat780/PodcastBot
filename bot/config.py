@@ -7,17 +7,19 @@ class Config(BaseSettings):
 	token: str
 	admin_id: int
 
-	mongo_url: str
-	mongo_db_name: str
-	mongo_collection_name: str
+	mongo_host: str
 
 	access_key: str
 	secret_key: str
 	endpoint_url: str
 	bucket_name: str
-	storage_path: str
+	domain: str
 
-	model_config = SettingsConfigDict(env_file=".env")
+	@property
+	def MONGO_URL(self) -> str:
+		return f"mongodb://{self.mongo_host}:27017"
+
+	model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
 
 
 config = Config()

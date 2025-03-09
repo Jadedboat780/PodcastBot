@@ -16,9 +16,9 @@ class FileType(StrEnum):
 class AudioDoc(Document):
 	"""Document for audio files"""
 
-	id: Indexed(str, unique=True)
+	id: Indexed(str)
 	title: str
-	type: FileType
+	type: FileType = FileType.AUDIO
 	size: int = Field(ge=1)
 	link: str
 	duration: int = Field(ge=1)
