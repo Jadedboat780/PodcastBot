@@ -69,7 +69,7 @@ class Storage:
 		"""Returns link to file by filename"""
 		files = await self.list_files()
 		if filename in files:
-			return f"{config.storage_path}/{filename}"
+			return f"{config.domain}/{filename}"
 		else:
 			return None
 
