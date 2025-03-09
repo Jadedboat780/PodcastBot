@@ -6,7 +6,7 @@ from aiogram.enums import ParseMode
 
 from bot.config import config
 from bot.handlers import start_router, url_router
-from bot.keyboards import main_menu
+from bot.mein_menu import main_menu
 
 
 async def main():

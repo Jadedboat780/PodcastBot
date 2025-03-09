@@ -2,7 +2,7 @@ from aiogram import Bot, F, Router
 from aiogram.filters import ExceptionTypeFilter
 from aiogram.types import ErrorEvent, FSInputFile, Message, URLInputFile
 
-from bot.db import AudioDoc, FileType, mongo_collection
+from bot.db import AudioDoc, FileType
 from bot.storage import storage
 
 from .errors import LargeFile, UrlToStream, UrlWrong
@@ -23,7 +23,7 @@ async def handle_url(message: Message):
 	anecdote: str = get_anecdote()
 	await message.answer(text=anecdote)
 
-	if audio_doc := await mongo_collection.get_doc({"_id": video_id}):
+	if audio_doc := await AudioDoc.get(video_id):
 		if audio_doc.size > LIMIT_FILE_SIZE:
 			raise LargeFile(audio_doc.link)
 
@@ -38,12 +38,12 @@ async def handle_url(message: Message):
 		audio_doc = AudioDoc(
 			id=video_id,
 			title=video_info.title,
-			type=FileType.audio,
+			type=FileType.AUDIO,
 			size=file_size,
 			link=await storage.file_link(audio_file.filename),
 			duration=video_info.duration,
 		)
-		await mongo_collection.insert_doc(audio_doc)
+		await audio_doc.insert()
 
 		if audio_doc.size > LIMIT_FILE_SIZE:
 			raise LargeFile(audio_doc.link)
