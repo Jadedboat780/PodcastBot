@@ -12,6 +12,7 @@ dependencies = [
     "pydantic-settings>=2.8.1",
     "maturin>=1.8.2",
     "yt-dlp>=2025.2.19",
+    "fluentogram>=1.1.10",
 ]
 
 [dependency-groups]
