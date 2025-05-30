@@ -7,6 +7,7 @@ from fluentogram import TranslatorHub
 
 class TranslatorRunnerMiddleware(BaseMiddleware):
 	"""Defines the user's language and creates an i18n object of the `TranslatorRunner` type"""
+
 	async def __call__(
 		self, handler: Callable[[TelegramObject, dict[str, any]], Awaitable[any]], event: TelegramObject, data: dict[str, any]
 	) -> any:
