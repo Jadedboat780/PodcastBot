@@ -1,7 +1,7 @@
 from typing import TYPE_CHECKING
 
 from aiogram import F, Router
-from aiogram.filters import Command, CommandStart
+from aiogram.filters import Command, CommandStart, StateFilter
 from aiogram.types import CallbackQuery, InlineKeyboardMarkup, Message
 from fluentogram import TranslatorRunner
 
@@ -39,3 +39,8 @@ async def cb_help(callback: CallbackQuery, i18n: TranslatorRunner):
 	keyboard = InlineKeyboardMarkup(inline_keyboard=initial_buttons(KeyboardCommand.HELP, i18n))
 	text = i18n.message.help()
 	await callback.message.edit_text(text=text, reply_markup=keyboard)
+
+@router.message(StateFilter(None), Command(commands='cancel'))
+async def handle_cancel(message: Message, i18n: TranslatorRunner):
+	text = i18n.message.cancel()
+	await message.answer(text=text)
