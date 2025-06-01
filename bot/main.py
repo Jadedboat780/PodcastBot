@@ -7,7 +7,7 @@ from fluentogram import TranslatorHub
 
 from bot.config import config
 from bot.db import init_db
-from bot.handlers import start_router, url_router
+from bot.handlers import start_router, support_router, url_router
 from bot.middlewares import TranslatorRunnerMiddleware
 from bot.utils import bot_menu, create_translator_hub
 
@@ -22,7 +22,7 @@ async def main():
 	translator_hub: TranslatorHub = create_translator_hub()
 
 	dp.startup.register(bot_menu)
-	dp.include_routers(start_router, url_router)
+	dp.include_routers(start_router, support_router, url_router)
 	dp.update.middleware(TranslatorRunnerMiddleware())
 	await bot.delete_webhook(drop_pending_updates=True)
 
