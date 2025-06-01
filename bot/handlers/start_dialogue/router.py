@@ -40,7 +40,8 @@ async def cb_help(callback: CallbackQuery, i18n: TranslatorRunner):
 	text = i18n.message.help()
 	await callback.message.edit_text(text=text, reply_markup=keyboard)
 
-@router.message(StateFilter(None), Command(commands='cancel'))
+
+@router.message(StateFilter(None), Command(commands="cancel"))
 async def handle_cancel(message: Message, i18n: TranslatorRunner):
 	text = i18n.message.cancel()
 	await message.answer(text=text)
