@@ -10,8 +10,16 @@ message-help = <b>How to use the bot:</b>
     <b>IMPORTANT:</b>
     1) The bot only supports YouTube links — other platforms won’t work
     2) Have ideas or feedback? Feel free to contact support (/support) — I’d love to hear from you!
-
+message-cancel = Hmm... Looks like there’s nothing to cancel — you didn’t start anything!
 
 button-start = Back to start ↩
 button-help = Usage guide ⓘ
 button-source = Source code 💾
+
+support-message = Your next message will be sent to support. To cancel, use /cancel.
+support-cancel = Message sending has been cancelled.
+support-send_message = Thank you! Your message has been sent to support. You’ll receive a reply in this chat shortly.
+
+error-url_wrong = Incorrect url
+error-url_to_stream = The url leads to a direct stream
+error-undefined = Извините, но что-то пошло не так.\nПопробуйте отправить ссылку на другое видео

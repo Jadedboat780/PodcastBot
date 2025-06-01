@@ -5,13 +5,13 @@ from fluentogram import FluentTranslator, TranslatorHub
 def create_translator_hub() -> TranslatorHub:
 	"""Initializes and returns TranslatorHub"""
 	translator_hub = TranslatorHub(
-		{"ru": ("ru", "en"), "en": ("en", "ru")},
+		{"ru": ("ru", "en"), "en": ("en",)},
 		[
 			FluentTranslator(
-				locale="ru", translator=FluentBundle.from_files(locale="ru-RU", filenames=["locales/ru/LC_MESSAGES/txt.ftl"])
+				locale="ru", translator=FluentBundle.from_files(locale="ru-RU", filenames=["locales/ru/txt.ftl"])
 			),
 			FluentTranslator(
-				locale="en", translator=FluentBundle.from_files(locale="en-US", filenames=["locales/en/LC_MESSAGES/txt.ftl"])
+				locale="en", translator=FluentBundle.from_files(locale="en-US", filenames=["locales/en/txt.ftl"])
 			),
 		],
 	)

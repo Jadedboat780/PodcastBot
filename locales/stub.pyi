@@ -5,12 +5,16 @@ class TranslatorRunner:
 
 	message: Message
 	button: Button
+	support: Support
+	error: Error
 
 class Message:
 	@staticmethod
 	def welcome() -> Literal["""Welcome message"""]: ...
 	@staticmethod
 	def help() -> Literal["""Help message"""]: ...
+	@staticmethod
+	def cancel() -> Literal["""Cancel message"""]: ...
 
 class Button:
 	@staticmethod
@@ -19,3 +23,19 @@ class Button:
 	def help() -> Literal["""Button help"""]: ...
 	@staticmethod
 	def source() -> Literal["""Button source"""]: ...
+
+class Support:
+	@staticmethod
+	def message() -> Literal["""Support message"""]: ...
+	@staticmethod
+	def cancel() -> Literal["""Cancel the action"""]: ...
+	@staticmethod
+	def	send_message() -> Literal["""User send message"""]: ...
+
+class Error:
+	@staticmethod
+	def url_wrong() -> Literal["""Wrong url"""]: ...
+	@staticmethod
+	def url_to_stream() -> Literal["""Link to stream"""]: ...
+	@staticmethod
+	def undefined() -> Literal["""Undefined error"""]: ...
