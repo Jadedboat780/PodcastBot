@@ -1,6 +1,6 @@
-from aiogram import Bot, F, Router
+from aiogram import F, Router
 from aiogram.exceptions import AiogramError
-from aiogram.types import ErrorEvent, FSInputFile, Message, URLInputFile
+from aiogram.types import FSInputFile, Message, URLInputFile
 
 import audio_lib
 from bot.db import AudioDoc, FileType
@@ -46,11 +46,3 @@ async def handle_url(message: Message):
 
         url_file = URLInputFile(audio_doc.link)
         await message.reply_audio(audio=url_file, title=audio_doc.title, duration=audio_doc.duration)
-
-
-@router.errors()
-async def handle_error(event: ErrorEvent, bot: Bot) -> None:
-    chat_id = event.update.message.chat.id
-    text = str(event.exception)
-    message_id = event.update.message.message_id
-    await bot.send_message(chat_id=chat_id, text=text, reply_to_message_id=message_id)
