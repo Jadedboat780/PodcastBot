@@ -6,22 +6,18 @@ readme = "README.md"
 license = "MIT"
 requires-python = ">=3.12"
 dependencies = [
-    "aiogram>=3.18.0",
-    "aiobotocore>=2.21.1",
-    "beanie>=1.29.0",
-    "pydantic-settings>=2.8.1",
-    "maturin>=1.8.2",
-    "yt-dlp>=2025.2.19",
-    "fluentogram>=1.1.10",
+    "aiogram>=3.22.0",
+    "aiobotocore>=2.25.2",
+    "beanie>=2.0.0",
+    "pydantic-settings>=2.12.0",
+    "yt-dlp>=2025.11.11.5312.dev0",
+    "fluentogram>=1.2.1",
 ]
 
 [dependency-groups]
 dev = [
-    "pytest>=8.3.4",
-    "pytest-asyncio>=0.26.0",
-    "ruff>=0.11.5",
-    "types-aiobotocore[essential]>=2.21.1",
-    # mypy
+    "ruff>=0.14.4",
+    "types-aiobotocore[essential]>=2.25.1",
 ]
 
 [tool.ruff]
