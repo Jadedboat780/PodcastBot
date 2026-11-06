@@ -1,6 +1,6 @@
 services:
   mongodb:
-    image: mongo:7.0.5
+    image: mongo:9.0.4
     container_name: mongo_db
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
