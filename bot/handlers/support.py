@@ -1,6 +1,6 @@
 from typing import TYPE_CHECKING
 
-from aiogram import Router
+from aiogram import Bot, Router
 from aiogram.filters import Command, StateFilter
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
@@ -34,9 +34,10 @@ async def handle_cancel(message: Message, i18n: TranslatorRunner, state: FSMCont
 
 
 @router.message(StateFilter(WriteInSupport.waiting_message))
-async def user_send_massage(message: Message, i18n: TranslatorRunner, state: FSMContext):
-    text = f"User `{message.from_user.username}` send message:\n\n {message.text}"
-    await message.bot.send_message(chat_id=config.admin_id, text=text)
+async def user_send_massage(message: Message, i18n: TranslatorRunner, state: FSMContext, bot: Bot):
+    username = message.from_user.username if message.from_user else None
+    text = f"User `{username}` send message:\n\n {message.text}"
+    await bot.send_message(chat_id=config.admin_id, text=text)
 
     text = i18n.support.send_message()
     await message.answer(text=text)

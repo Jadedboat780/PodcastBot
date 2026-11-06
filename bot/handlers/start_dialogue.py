@@ -17,7 +17,7 @@ class KeyboardCommand(StrEnum):
     HELP = auto()
 
 
-def initial_buttons(command: KeyboardCommand, i18n: TranslatorRunner) -> list[list[InlineKeyboardButton]] | None:
+def initial_buttons(command: KeyboardCommand, i18n: TranslatorRunner) -> list[list[InlineKeyboardButton]]:
     """Returns the inline-buttons for the initial message"""
 
     button_start = InlineKeyboardButton(text=i18n.button.start(), callback_data="start")
@@ -29,7 +29,7 @@ def initial_buttons(command: KeyboardCommand, i18n: TranslatorRunner) -> list[li
     elif command == KeyboardCommand.HELP:
         return [[button_start], [button_source]]
     else:
-        return None
+        raise ValueError(f"Unknown command: {command}")
 
 
 router = Router()
@@ -53,14 +53,16 @@ async def handle_help(message: Message, i18n: TranslatorRunner):
 async def cb_start(callback: CallbackQuery, i18n: TranslatorRunner):
     text = i18n.message.welcome()
     keyboard = InlineKeyboardMarkup(inline_keyboard=initial_buttons(KeyboardCommand.START, i18n))
-    await callback.message.edit_text(text=text, reply_markup=keyboard)
+    if isinstance(callback.message, Message):
+        await callback.message.edit_text(text=text, reply_markup=keyboard)
 
 
 @router.callback_query(F.data == "help")
 async def cb_help(callback: CallbackQuery, i18n: TranslatorRunner):
     keyboard = InlineKeyboardMarkup(inline_keyboard=initial_buttons(KeyboardCommand.HELP, i18n))
     text = i18n.message.help()
-    await callback.message.edit_text(text=text, reply_markup=keyboard)
+    if isinstance(callback.message, Message):
+        await callback.message.edit_text(text=text, reply_markup=keyboard)
 
 
 @router.message(StateFilter(None), Command(commands="cancel"))

@@ -1,7 +1,6 @@
 from enum import StrEnum, auto
-from typing import Annotated
 
-from beanie import Document, Indexed
+from beanie import Document
 from pydantic import Field
 
 
@@ -16,7 +15,8 @@ class FileType(StrEnum):
 
 class AudioDoc(Document):
     """Document for audio files"""
-    id: Indexed(str)
+
+    id: str  # ty: ignore[invalid-attribute-override]
     title: str
     type: FileType = FileType.AUDIO
     size: int = Field(ge=1)

@@ -13,12 +13,14 @@ router = Router()
 @router.message(F.text)
 async def handle_url(message: Message):
     url = message.text
+    if url is None:
+        raise AiogramError("Incorrect url")
     video_id = url_validation(url)
 
     if video_id is None:
         raise AiogramError("Incorrect url")
 
-    if message.from_user.language_code == "ru":
+    if message.from_user and message.from_user.language_code == "ru":
         anecdote = get_anecdote()
         await message.answer(text=anecdote)
 
@@ -32,14 +34,20 @@ async def handle_url(message: Message):
         await audio_lib.yt.download_audio(url, video_info.id)
 
         audio_file = FSInputFile(f"{video_info.id}.m4a")
-        file_size = await storage.upload_file(".", audio_file.filename, is_delete=True)
+        filename = audio_file.filename
+        if filename is None:
+            raise AiogramError("Audio file has no name")
+        file_size = await storage.upload_file(".", filename, is_delete=True)
+        link = await storage.file_link(filename)
+        if link is None:
+            raise AiogramError("Failed to get the file link")
 
         audio_doc = AudioDoc(
             id=video_id,
             title=video_info.title,
             type=FileType.AUDIO,
             size=file_size,
-            link=await storage.file_link(audio_file.filename),
+            link=link,
             duration=video_info.duration,
         )
         await audio_doc.insert()

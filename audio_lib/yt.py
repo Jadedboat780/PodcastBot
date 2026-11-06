@@ -6,7 +6,7 @@ from yt_dlp import YoutubeDL
 
 from .schemas import VideoInfo
 
-ssl._create_default_https_context = ssl.create_default_context(cafile=certifi.where())
+ssl._create_default_https_context = lambda: ssl.create_default_context(cafile=certifi.where())  # ty: ignore[invalid-assignment]
 
 
 def _video_info(url: str) -> VideoInfo:
