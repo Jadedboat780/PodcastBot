@@ -1,5 +1,5 @@
 # Отдельный "сборочный" образ
-FROM python:3.13-slim AS base
+FROM python:3.15-slim AS base
 
 FROM base AS builder
 # Install uv
