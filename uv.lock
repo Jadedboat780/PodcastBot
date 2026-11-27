@@ -31,7 +31,7 @@ wheels = [
 
 [[package]]
 name = "aiogram"
-version = "3.31.0"
+version = "3.34.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiofiles" },
@@ -41,9 +41,9 @@ dependencies = [
     { name = "pydantic" },
     { name = "typing-extensions" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/ec/5f/b2ee094181bb578c0987eef92a51af1fc2caa2be3589da2e37543c0f2906/aiogram-3.31.0.tar.gz", hash = "sha256:f2c5064fe52d88898c86af62261c405440a014216e45dd99b2c6555a5602ce30", size = 2025095, upload-time = "2026-08-26T00:00:42.97Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d8/92/e2afbfee7c58f72bd4578e00926ab27b9f906d35e7a8eb780d14dd6abbd4/aiogram-3.34.0.tar.gz", hash = "sha256:7b2dd2f7396675339c8cd1338341a6f07633542ffcd67185e6eeb20519df5707", size = 2573111, upload-time = "2026-11-22T21:55:26.255Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/ab/dd/c1ea24eb687e564b6b64db3939b858bbcbd3f6998496508a168ce54c5770/aiogram-3.31.0-py3-none-any.whl", hash = "sha256:d889493c5917a867fc9da81fd6e6b3ae438e98bfe1b004fcdafe7400461a6c1b", size = 859100, upload-time = "2026-08-26T00:00:41.178Z" },
+    { url = "https://files.pythonhosted.org/packages/6d/7f/856cd4abbc9bdebeb82c886a0e99f9103d14b1462b9146d2bf5c3cac5e7a/aiogram-3.34.0-py3-none-any.whl", hash = "sha256:830e3067fe5040740e685986f5b7b3fdeec11435f650a503ffce8dbe2d4fd407", size = 1128441, upload-time = "2026-11-22T21:55:24.326Z" },
 ]
 
 [[package]]
@@ -738,7 +738,7 @@ wheels = [
 
 [[package]]
 name = "podcast-bot"
-version = "1.5"
+version = "1.0"
 source = { virtual = "." }
 dependencies = [
     { name = "aiobotocore" },
